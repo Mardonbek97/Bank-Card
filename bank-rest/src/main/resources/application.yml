@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank-rest
+    username: bankrest
+    password: bankrest
+
+  jpa:
+    hibernate:
+    ddl-auto: update
+    show-sql: true
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    default-schema: public
+    enabled: true
+
+server:
+  port: 8080
+
+jwt:
+  secret: VerySecretKeyChangeForProd1234567890
+  expiration-ms: 86400000
+
+encryption:
+  key: ChangeThisAESKey123456
+
+  spring:
+    datasource:
+      url: jdbc:postgresql://localhost:5432/bank-rest
+      username: bankrest
+      password: bankrest
+    jpa:
+      hibernate:
+        ddl-auto: update
+        open-in-view: false
+      properties:
+        hibernate:
+          format_sql: true
+
+    liquibase:
+      change-log: classpath:db/changelog/db.changelog-master.xml
+      default-schema: public
+      enabled: true
+      drop-first: false
+      contexts: production
+      clear-checksums: false
+      test-rollback-on-update: false
+      validate-on-migrate: false
+
+
